@@ -7,6 +7,7 @@ public class UI extends PApplet
     Button b;
     MovingCircle mc;
     NavigationMap map;
+    PlanetDisplay planetDisplay;
 
     boolean[] keys = new boolean[1024];
 
@@ -39,6 +40,7 @@ public class UI extends PApplet
         mc = new MovingCircle(this, width / 2, height * .75f, 50);
         radar = new Radar(this, 1, width / 2, height / 2, 100);
         map = new NavigationMap(this);
+        planetDisplay = new PlanetDisplay(this, map.getPlanets());
     }
 
     Radar radar;
@@ -60,6 +62,11 @@ public class UI extends PApplet
         scale(0.7f);
         translate(1100, 0);
         map.render();
+        popMatrix();
+
+        pushMatrix();
+        translate(600, 0);
+        planetDisplay.render();
         popMatrix();
 
         if (checkKey(LEFT))

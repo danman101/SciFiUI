@@ -29,6 +29,11 @@ public class NavigationMap
         drawCursor();
     }
 
+    public ArrayList<Planet> getPlanets()
+    {
+        return this.planets;
+    }
+    
     public void loadData()
     {
         Table table = ui.loadTable("planets.csv", "header");
