@@ -28,7 +28,7 @@ public class UI extends PApplet
 
     public void settings()
     {
-        size(800, 800);
+        size(1300, 800);
         // Use fullscreen instead of size to make your interface fullscreen
         //fullScreen(P3D); 
     }
@@ -55,7 +55,12 @@ public class UI extends PApplet
         radar.update();
         radar.render();
         */
+
+        pushMatrix();
+        scale(0.6f);
+        translate(1300, 0);
         map.render();
+        popMatrix();
 
         if (checkKey(LEFT))
         {

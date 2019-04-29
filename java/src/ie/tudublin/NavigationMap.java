@@ -10,7 +10,8 @@ public class NavigationMap
 {
 
     private UI ui;
-    
+    int width = 800;
+    int height = 800;
     private ArrayList<Planet> planets = new ArrayList<Planet>();
 
     public NavigationMap(UI ui)
@@ -53,11 +54,9 @@ public class NavigationMap
         }
     }
     
-    
-    
     void drawMap()
     {
-        float gap = ui.width / 12;
+        float gap = width / 12;
         ui.stroke(255);
         int n = 10;
         int x = 0;
@@ -67,17 +66,30 @@ public class NavigationMap
         {
             x+=gap;
             y-=gap;
-            ui.line(x, gap, x, ui.height - gap);
-            ui.line(gap, ui.height + y, ui.width - gap, ui.height + y);
+            ui.line(x, gap, x, height - gap);
+            ui.line(gap, height + y, width - gap, height + y);
         }
+        drawMapRings();
     }
     
+    void drawMapRings()
+    {
+        ui.noFill();
+        ui.stroke(255);
+        int x = 50;
+        for(int i = 0; i < 5; i++)
+        {
+            x += 110;
+            ui.ellipse(width/2, height/2, x, x);
+        }
+    }
+
     void drawPlanets()
     {
         for(Planet planet:planets)
         {
-            float x = UI.map(planet.getxG(), -5, 5, ui.width/12, ui.width-ui.width/12);
-            float y = UI.map(planet.getyG(), -5, 5, ui.width/12, ui.height-ui.width/12);
+            float x = UI.map(planet.getxG(), -5, 5, width/12, width-width/12);
+            float y = UI.map(planet.getyG(), -5, 5, width/12, height-width/12);
             float d = planet.getAbsMag();
             System.out.println("\n" + planet);
             ui.noFill();
