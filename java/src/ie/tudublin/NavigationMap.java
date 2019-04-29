@@ -8,7 +8,7 @@ import processing.core.PApplet;
 import processing.data.Table;
 import processing.data.TableRow;
 
-public class NavigationMap
+public class NavigationMap implements Render
 {
 
     private UI ui;
@@ -33,7 +33,7 @@ public class NavigationMap
     {
         return this.planets;
     }
-    
+
     public void loadData()
     {
         Table table = ui.loadTable("planets.csv", "header");

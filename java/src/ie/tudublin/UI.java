@@ -58,21 +58,30 @@ public class UI extends PApplet
         radar.render();
         */
 
-        pushMatrix();
-        scale(0.7f);
-        translate(1100, 0);
-        map.render();
-        popMatrix();
-
-        pushMatrix();
-        translate(600, 0);
-        planetDisplay.render();
-        popMatrix();
+        move(map, 1100, 0, 0.7f);
+        move(planetDisplay, 600, 0);
 
         if (checkKey(LEFT))
         {
             System.out.println("Left arrow key pressed");
         }
+    }
+
+    public void move(Render obj, int x, int y, float scale)
+    {
+        pushMatrix();
+        scale(scale);
+        translate(x, y);
+        obj.render();
+        popMatrix();
+    }
+    
+    public void move(Render obj, int x, int y)
+    {
+        pushMatrix();
+        translate(x, y);
+        obj.render();
+        popMatrix();
     }
 }
 

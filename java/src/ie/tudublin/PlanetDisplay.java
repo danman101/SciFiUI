@@ -3,7 +3,7 @@ package ie.tudublin;
 import java.util.ArrayList;
 import processing.core.PImage;
 
-public class PlanetDisplay {
+public class PlanetDisplay implements Render{
 
     private int windowHeight;
     private int windowWidth;
