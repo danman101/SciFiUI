@@ -2,6 +2,8 @@ package ie.tudublin;
 
 import java.util.ArrayList;
 
+import com.sun.corba.se.spi.servicecontext.UEInfoServiceContext;
+
 import processing.core.PApplet;
 import processing.data.Table;
 import processing.data.TableRow;
@@ -24,20 +26,19 @@ public class NavigationMap
     {
         drawMap();
         drawPlanets();
+        drawCursor();
     }
 
     public void loadData()
     {
-        Table table = ui.loadTable("HabHYG15ly.csv", "header");
+        Table table = ui.loadTable("planets.csv", "header");
         
         for(int i = 0 ; i < table.getRowCount() ; i ++)
         {
             TableRow row = table.getRow(i);
-            System.out.println(row.getString("Display Name"));
-            System.out.println(row.getString("Hab?"));            
+            System.out.println(row.getString("Display Name"));          
         }
         
-
         for(TableRow row:table.rows())
         {
             Planet planet = new Planet(row);
@@ -76,10 +77,10 @@ public class NavigationMap
     {
         ui.noFill();
         ui.stroke(255);
-        int x = 50;
+        int x = 25;
         for(int i = 0; i < 5; i++)
         {
-            x += 110;
+            x += 120;
             ui.ellipse(width/2, height/2, x, x);
         }
     }
@@ -88,17 +89,38 @@ public class NavigationMap
     {
         for(Planet planet:planets)
         {
-            float x = UI.map(planet.getxG(), -5, 5, width/12, width-width/12);
-            float y = UI.map(planet.getyG(), -5, 5, width/12, height-width/12);
-            float d = planet.getAbsMag();
+            float x = 400;
+            float y = 400;
+            float d = 40;
             System.out.println("\n" + planet);
-            ui.noFill();
-            ui.stroke(244, 66, 66);
-            ui.ellipse(x, y, d, d);
-            ui.stroke(244, 229, 65);
-            ui.line(x, y-2, x, y+2);
-            ui.line(x-2, y, x+2, y);
-            ui.text(planet.getDisplayName(), x+10, y+4);
+            int a = 413;
+            
+            for (int i = 0; i < 5; i++)
+            {   
+                x = (float) (25 * Math.cos(400 * Math.PI));
+                y = 400;
+                a += 60; //actual x
+                ui.noFill();
+                ui.stroke(244, 66, 66);
+                ui.ellipse(a, y, d, d); //swap x for y (testing)
+                ui.stroke(244, 229, 65);
+                ui.text(planet.getDisplayName(), x+10, y+4);
+            }
         }
+    }
+
+    void drawCursor()
+    {
+        ui.stroke(244, 66, 66);
+        
+        ui.arc(ui.mouseX, ui.mouseY, 50, 50, 0 - UI.HALF_PI/3, UI.HALF_PI/3);
+        ui.arc(ui.mouseX, ui.mouseY, 50, 50, (3 * UI.PI/2) - UI.HALF_PI/3, (3 * UI.PI /2) + UI.HALF_PI/3);
+        ui.arc(ui.mouseX, ui.mouseY, 50, 50, UI.PI - UI.HALF_PI/3, UI.PI + UI.HALF_PI/3);
+        ui.arc(ui.mouseX, ui.mouseY, 50, 50, UI.PI / 2 - UI.HALF_PI/3, UI.PI / 2 + UI.HALF_PI/3);
+        
+        ui.line(0, ui.mouseY, ui.mouseX - 25 , ui.mouseY);
+        ui.line(width, ui.mouseY, ui.mouseX + 25, ui.mouseY);
+        ui.line(ui.mouseX, 0, ui.mouseX, ui.mouseY - 25);
+        ui.line(ui.mouseX, height, ui.mouseX, ui.mouseY + 25);
     }
 }

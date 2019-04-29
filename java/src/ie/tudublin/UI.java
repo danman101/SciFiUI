@@ -57,8 +57,8 @@ public class UI extends PApplet
         */
 
         pushMatrix();
-        scale(0.6f);
-        translate(1300, 0);
+        scale(0.7f);
+        translate(1100, 0);
         map.render();
         popMatrix();
 
