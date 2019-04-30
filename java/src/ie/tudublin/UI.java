@@ -85,10 +85,13 @@ public class UI extends PApplet
     }
 
     public void mousePressed()
-    {
-        if(planetDisplay.getPlanet() != null)
+    {   
+        for(Planet planet : map.getPlanets())
         {
-            planetDisplay.getPlanet().setSelected(false);
+            if(planetDisplay.getPlanet() != null && planet.isOver() == true && planetDisplay.getPlanet() != planet)
+            {
+                planetDisplay.getPlanet().setSelected(false);
+            }
         }
         for(Planet planet : map.getPlanets())
         {
