@@ -8,7 +8,6 @@ public class UI extends PApplet
     MovingCircle mc;
     NavigationMap map;
     PlanetDisplay planetDisplay;
-
     boolean[] keys = new boolean[1024];
 
     public void keyPressed()
@@ -58,9 +57,9 @@ public class UI extends PApplet
         //radar.render();
         
 
-        //move(map, 1100, 0, 0.7f);
+        moveAndRender(map, 1100, 0, 0.7f);
         moveAndRender(planetDisplay, 600, 0);
-        map.render();
+        //map.render();
 
         if (checkKey(LEFT))
         {
@@ -73,7 +72,7 @@ public class UI extends PApplet
         pushMatrix();
         scale(scale);
         translate(x, y);
-        obj.render();
+        obj.render((1/scale) * mouseX -x,(1/scale) * mouseY -y);
         popMatrix();
     }
     
@@ -81,7 +80,7 @@ public class UI extends PApplet
     {
         pushMatrix();
         translate(x, y);
-        obj.render();
+        obj.render(mouseX - x, mouseY - y);
         popMatrix();
     }
 

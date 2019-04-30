@@ -14,17 +14,19 @@ public class NavigationMap implements Render
     int height = 800;
     float t = UI.PI;
     int[] ringWidth = {145, 265, 385, 505, 625};
-
     private ArrayList<Planet> planets = new ArrayList<Planet>();
-
+    static float mX;
+    static float mY;
     public NavigationMap(UI ui)
     {
         this.ui = ui;
         loadData();
     }
-    
-    public void render()
+
+    public void render(float mX, float mY)
     {
+        this.mX = mX;
+        this.mY = mY;
         drawMap();
         drawPlanets();
         drawCursor();
@@ -128,14 +130,14 @@ public class NavigationMap implements Render
         ui.noFill();
         ui.stroke(244, 66, 66);
         
-        ui.arc(ui.mouseX, ui.mouseY, 50, 50, 0 - UI.HALF_PI/3, UI.HALF_PI/3);
-        ui.arc(ui.mouseX, ui.mouseY, 50, 50, (3 * UI.PI/2) - UI.HALF_PI/3, (3 * UI.PI /2) + UI.HALF_PI/3);
-        ui.arc(ui.mouseX, ui.mouseY, 50, 50, UI.PI - UI.HALF_PI/3, UI.PI + UI.HALF_PI/3);
-        ui.arc(ui.mouseX, ui.mouseY, 50, 50, UI.PI / 2 - UI.HALF_PI/3, UI.PI / 2 + UI.HALF_PI/3);
+        ui.arc(mX, mY, 50, 50, 0 - UI.HALF_PI/3, UI.HALF_PI/3);
+        ui.arc(mX, mY, 50, 50, (3 * UI.PI/2) - UI.HALF_PI/3, (3 * UI.PI /2) + UI.HALF_PI/3);
+        ui.arc(mX, mY, 50, 50, UI.PI - UI.HALF_PI/3, UI.PI + UI.HALF_PI/3);
+        ui.arc(mX, mY, 50, 50, UI.PI / 2 - UI.HALF_PI/3, UI.PI / 2 + UI.HALF_PI/3);
         
-        ui.line(0, ui.mouseY, ui.mouseX - 25 , ui.mouseY);
-        ui.line(width, ui.mouseY, ui.mouseX + 25, ui.mouseY);
-        ui.line(ui.mouseX, 0, ui.mouseX, ui.mouseY - 25);
-        ui.line(ui.mouseX, height, ui.mouseX, ui.mouseY + 25);
+        ui.line(0, mY, mX - 25 , mY);
+        ui.line(width, mY, mX + 25, mY);
+        ui.line(mX, 0, mX, mY - 25);
+        ui.line(mX, height, mX, mY + 25);
     }
 }

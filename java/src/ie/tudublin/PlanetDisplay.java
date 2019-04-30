@@ -29,7 +29,7 @@ public class PlanetDisplay implements Render{
         return this.planet;
     }
 
-    public void render()
+    public void render(float mX, float mY)
     {
         ui.rect(0, 0, windowWidth, windowHeight);
         if (image != null)

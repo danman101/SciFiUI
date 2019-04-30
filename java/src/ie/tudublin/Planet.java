@@ -94,7 +94,7 @@ public class Planet
     }
     
     boolean isOver() {
-        if (UI.dist(x, y, ui.mouseX, ui.mouseY) < this.width)
+        if (UI.dist(x, y, NavigationMap.mX, NavigationMap.mY) < this.width)
           return true;
         else
           return false;

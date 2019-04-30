@@ -2,5 +2,5 @@ package ie.tudublin;
 
 public interface Render {
 
-    public void render();
+    public void render(float mX, float mY);
 }
