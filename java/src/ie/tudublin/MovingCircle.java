@@ -28,7 +28,6 @@ public class MovingCircle
         ui.fill(255);
         ui.textAlign(PApplet.CENTER, PApplet.CENTER);
         ui.text("I am a moving circle", x, y);
-
     }
 
     public void update()

@@ -10,6 +10,7 @@ public class UI extends PApplet
     PlanetDisplay planetDisplay;
     boolean[] keys = new boolean[1024];
     Ship ship;
+    SpaceTravel travel;
 
     public void keyPressed()
     {
@@ -42,6 +43,7 @@ public class UI extends PApplet
         map = new NavigationMap(this);
         planetDisplay = new PlanetDisplay(this);
         ship = new Ship(this);
+        travel = new SpaceTravel(ship);
     }
 
     Radar radar;
@@ -50,8 +52,7 @@ public class UI extends PApplet
     {
         background(0);
         
-        
-        // mc.update();
+        //mc.update();
         //mc.render();
         //radar.update();
         //radar.render();
@@ -60,11 +61,7 @@ public class UI extends PApplet
         moveAndRender(planetDisplay, 600, 70);
         moveAndRender(button, 300, 300);
         ship.render();
-
-        if (checkKey(LEFT))
-        {
-            System.out.println("Left arrow key pressed");
-        }
+        travel.update();
     }
 
     public void moveAndRender(Render obj, int x, int y, float scale)
@@ -99,12 +96,14 @@ public class UI extends PApplet
             {
                 planetDisplay.setPlanet(planet);
                 planet.setSelected(true);
+                travel.setSelectedPlanet(planet);
             }
         }
 
         if (button.isOver())
         {
-            System.out.println("Over");
+            button.setClicked(true);
+            travel.setClicked(true);
         }
     }
 }

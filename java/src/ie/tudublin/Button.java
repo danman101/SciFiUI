@@ -12,6 +12,7 @@ public class Button implements Render
     private String text;
     private float mX;
     private float mY;
+    private boolean clicked;
 
     public Button(UI ui, float x, float y, float width, float height, String text)
     {
@@ -21,6 +22,7 @@ public class Button implements Render
         this.width = width;
         this.height = height;
         this.text = text;
+        clicked = false;
     }
 
     public void render(float mX, float mY)
@@ -44,5 +46,15 @@ public class Button implements Render
         {
             return false;
         }
+    }
+
+    public void setClicked(boolean clicked)
+    {
+        this.clicked = clicked;
+    }
+
+    public boolean getClicked()
+    {
+        return this.clicked;
     }
 }
