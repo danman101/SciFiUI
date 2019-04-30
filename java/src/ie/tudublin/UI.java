@@ -40,7 +40,7 @@ public class UI extends PApplet
         mc = new MovingCircle(this, width / 2, height * .75f, 50);
         radar = new Radar(this, 1, width / 2, height / 2, 100);
         map = new NavigationMap(this);
-        planetDisplay = new PlanetDisplay(this, map.getPlanets());
+        planetDisplay = new PlanetDisplay(this);
     }
 
     Radar radar;
@@ -83,6 +83,17 @@ public class UI extends PApplet
         translate(x, y);
         obj.render();
         popMatrix();
+    }
+
+    public void mousePressed()
+    {
+        for(Planet planet : map.getPlanets())
+        {
+            if (planet.isOver() == true)
+            {
+                planetDisplay.setPlanet(planet);
+            }
+        }
     }
 }
 

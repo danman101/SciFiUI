@@ -7,23 +7,34 @@ public class PlanetDisplay implements Render{
 
     private int windowHeight;
     private int windowWidth;
-    private ArrayList<Planet> planets;
+    private Planet planet;
     UI ui;
     PImage image;
 
-    public PlanetDisplay(UI ui, ArrayList<Planet> planets)
+    public PlanetDisplay(UI ui)
     {
         this.windowHeight = 100;
         this.windowWidth = 100; 
-        this.planets = planets;
         this.ui = ui;
-        image = ui.loadImage(planets.get(0).getImage());
-        System.out.println(planets.get(0).getImage());
+    }
+
+    public void setPlanet(Planet planet)
+    {
+        this.planet = planet;
+        this.image = ui.loadImage(planet.getImage());
+    }
+
+    public Planet getPlanet()
+    {
+        return this.planet;
     }
 
     public void render()
     {
         ui.rect(0, 0, windowWidth, windowHeight);
-        ui.image(image, 0,0);
+        if (image != null)
+        {   
+            ui.image(image, 0,0);
+        }
     }
 }

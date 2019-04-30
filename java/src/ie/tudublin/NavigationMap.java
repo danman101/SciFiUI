@@ -2,8 +2,6 @@ package ie.tudublin;
 
 import java.util.ArrayList;
 
-import com.sun.corba.se.spi.servicecontext.UEInfoServiceContext;
-
 import processing.core.PApplet;
 import processing.data.Table;
 import processing.data.TableRow;
@@ -24,7 +22,7 @@ public class NavigationMap implements Render
         this.ui = ui;
         loadData();
     }
-
+    
     public void render()
     {
         drawMap();
@@ -44,15 +42,13 @@ public class NavigationMap implements Render
         
         for(int i = 0 ; i < table.getRowCount() ; i ++)
         {
-            TableRow row = table.getRow(i);
-            System.out.println(row.getString("Display Name"));          
+            TableRow row = table.getRow(i);         
         }
         
         for(TableRow row:table.rows())
         {
-            Planet planet = new Planet(row);
-            planets.add(planet); 
-            System.out.println(planet.getDisplayName());  
+            Planet planet = new Planet(row, ui);
+            planets.add(planet);  
         }
     }
 
@@ -94,19 +90,19 @@ public class NavigationMap implements Render
 
     void drawPlanets()
     {
+        float cx = width/2;
+        float cy = width/2;
         int i = 1;
         int k = 0;
+
         for(Planet planet:planets)
         {
+            planet.setX((float) (cx +  Math.cos(planet.getAngle()) * ringWidth[i]/2));
+            planet.setY((float) (cy +  Math.sin(planet.getAngle()) * ringWidth[i]/2));
             
-            float cx = 400;
-            float cy = 400;
-            float x = (float) (cx +  Math.cos(planet.getAngle()) * ringWidth[i]/2);
-            float y = (float) (cy +  Math.sin(planet.getAngle()) * ringWidth[i]/2);
-            
-            ui.noFill();
-            ui.stroke(244, 66, 66);
-            ui.ellipse(x, y, 30, 30);
+            ui.fill(244, 244, 244);
+            ui.stroke(244, 244, 244);
+            ui.ellipse(planet.getX(), planet.getY(), planet.getWidth(), planet.getWidth());
             ui.stroke(244, 229, 65);
             //ui.text(planet.getDisplayName(), x+10, y+4);
 
@@ -128,7 +124,8 @@ public class NavigationMap implements Render
     }
 
     void drawCursor()
-    {
+    {   
+        ui.noFill();
         ui.stroke(244, 66, 66);
         
         ui.arc(ui.mouseX, ui.mouseY, 50, 50, 0 - UI.HALF_PI/3, UI.HALF_PI/3);
