@@ -1,6 +1,5 @@
 package ie.tudublin;
 
-import java.util.ArrayList;
 import processing.core.PImage;
 
 public class PlanetDisplay implements Render{
@@ -13,8 +12,8 @@ public class PlanetDisplay implements Render{
 
     public PlanetDisplay(UI ui)
     {
-        this.windowHeight = 100;
-        this.windowWidth = 100; 
+        this.windowHeight = 200;
+        this.windowWidth = 200; 
         this.ui = ui;
     }
 
@@ -31,10 +30,26 @@ public class PlanetDisplay implements Render{
 
     public void render(float mX, float mY)
     {
+        drawPlanetBox();
+        drawInfoBox();
+    }
+
+    public void drawPlanetBox()
+    {
         ui.rect(0, 0, windowWidth, windowHeight);
-        if (image != null)
+        if (planet != null)
         {   
-            ui.image(image, 0,0);
+            ui.image(image, 1,1, windowHeight-1, windowWidth-1);
+        }
+    }
+
+    public void drawInfoBox()
+    {
+        ui.rect(0, windowHeight + 20, windowWidth, windowHeight);
+        ui.textSize(20);
+        if(planet != null)
+        {
+            ui.text(planet.getDisplayName(), 2, windowHeight + 40);
         }
     }
 }
