@@ -42,11 +42,6 @@ public class NavigationMap implements Render
     {
         Table table = ui.loadTable("planets.csv", "header");
         
-        for(int i = 0 ; i < table.getRowCount() ; i ++)
-        {
-            TableRow row = table.getRow(i);         
-        }
-        
         for(TableRow row:table.rows())
         {
             Planet planet = new Planet(row, ui);
@@ -102,10 +97,17 @@ public class NavigationMap implements Render
             planet.setX((float) (cx +  Math.cos(planet.getAngle()) * ringWidth[i]/2));
             planet.setY((float) (cy +  Math.sin(planet.getAngle()) * ringWidth[i]/2));
             
-            ui.fill(244, 244, 244);
-            ui.stroke(244, 244, 244);
+            if(planet.getSelected()==true)
+            {
+                ui.fill(40, 40, 40);
+                ui.stroke(40, 40, 40);
+            }
+            else
+            {
+                ui.fill(244, 244, 244);
+                ui.stroke(244, 244, 244);
+            }
             ui.ellipse(planet.getX(), planet.getY(), planet.getWidth(), planet.getWidth());
-            ui.stroke(244, 229, 65);
             //ui.text(planet.getDisplayName(), x+10, y+4);
 
             k++;

@@ -11,6 +11,7 @@ public class Planet
     private float width;
     public float x;
     public float y;
+    private boolean selected;
     UI ui;
 
     public Planet(TableRow row, UI ui)
@@ -21,6 +22,7 @@ public class Planet
         angle = row.getFloat("Angle");
         width = 30.0f;
         this.ui = ui;
+        selected = false;
     }
 
     public void setDisplayName(String displayName)
@@ -91,6 +93,16 @@ public class Planet
     public float getWidth()
     {
         return this.width;
+    }
+
+    public void setSelected(boolean s)
+    {
+        this.selected = s;
+    }
+
+    public boolean getSelected()
+    {
+        return this.selected;
     }
     
     boolean isOver() {
