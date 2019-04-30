@@ -9,6 +9,7 @@ public class UI extends PApplet
     NavigationMap map;
     PlanetDisplay planetDisplay;
     boolean[] keys = new boolean[1024];
+    Ship ship;
 
     public void keyPressed()
     {
@@ -40,6 +41,7 @@ public class UI extends PApplet
         radar = new Radar(this, 1, width / 2, height / 2, 100);
         map = new NavigationMap(this);
         planetDisplay = new PlanetDisplay(this);
+        ship = new Ship(this);
     }
 
     Radar radar;
@@ -48,18 +50,16 @@ public class UI extends PApplet
     {
         background(0);
         
-       // b.render();
-
-       // mc.update();
+        // b.render();
+        // mc.update();
         //mc.render();
-
         //radar.update();
         //radar.render();
         
 
         moveAndRender(map, 1100, 0, 0.7f);
         moveAndRender(planetDisplay, 600, 0);
-        //map.render();
+        ship.render(mouseX, mouseY);
 
         if (checkKey(LEFT))
         {
