@@ -34,6 +34,11 @@ public class Planet
         return colour;
     }
 
+    public void setAngle(float angle)
+    {
+        this.angle = angle;
+    }
+
     public float getAngle()
     {
         return angle;

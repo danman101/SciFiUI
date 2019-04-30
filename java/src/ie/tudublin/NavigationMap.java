@@ -30,6 +30,7 @@ public class NavigationMap implements Render
         drawMap();
         drawPlanets();
         drawCursor();
+        updatePlanetAngle();
     }
 
     public ArrayList<Planet> getPlanets()
@@ -50,7 +51,7 @@ public class NavigationMap implements Render
         for(TableRow row:table.rows())
         {
             Planet planet = new Planet(row);
-            planets.add(planet);   
+            planets.add(planet); 
             System.out.println(planet.getDisplayName());  
         }
     }
@@ -93,28 +94,36 @@ public class NavigationMap implements Render
 
     void drawPlanets()
     {
-        int i = 0;
+        int i = 1;
         int k = 0;
         for(Planet planet:planets)
         {
             
             float cx = 400;
             float cy = 400;
-             
             float x = (float) (cx +  Math.cos(planet.getAngle()) * ringWidth[i]/2);
             float y = (float) (cy +  Math.sin(planet.getAngle()) * ringWidth[i]/2);
+            
             ui.noFill();
             ui.stroke(244, 66, 66);
-            ui.ellipse(x, y, 40, 40);
+            ui.ellipse(x, y, 30, 30);
             ui.stroke(244, 229, 65);
             //ui.text(planet.getDisplayName(), x+10, y+4);
-            //t+=0.001;
+
             k++;
             if (k == 2 )
             {
                 i++;
                 k= 0;
             }
+        }
+    }
+    
+    public void updatePlanetAngle()
+    {
+        for(Planet planet : planets)
+        {
+            planet.setAngle(planet.getAngle() + 0.001f);
         }
     }
 
