@@ -1,9 +1,9 @@
-Display Name,Image,Colour
-Mercury,mercury.jpg,grey
-Venus,venus.jpg,pale
-Earth,earth.jpg,sky blue
-Mars,mars.jpg,red
-Jupiter,jupiter.jpg,pale
-Saturn,saturn.jpg,off yellow
-Uranus,uranus.jpg,teal
-Neptune,neptune.jpg,deep blue
+Display Name,Image,Colour,Angle
+Mercury,mercury.jpg,grey,0.7853981634f
+Venus,venus.jpg,pale,3.386990817f
+Earth,earth.jpg,sky blue,0.0f
+Mars,mars.jpg,red,2.3561944902f
+Jupiter,jupiter.jpg,pale,1.17809972451f
+Saturn,saturn.jpg,off yellow,3.66519142919f
+Uranus,uranus.jpg,teal,5.2359877598f
+Neptune,neptune.jpg,deep blue,0.7853981634f

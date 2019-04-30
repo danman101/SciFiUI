@@ -48,18 +48,19 @@ public class UI extends PApplet
     public void draw()
     {
         background(0);
-        /*
-        b.render();
+        
+       // b.render();
 
-        mc.update();
-        mc.render();
+       // mc.update();
+        //mc.render();
 
-        radar.update();
-        radar.render();
-        */
+        //radar.update();
+        //radar.render();
+        
 
-        move(map, 1100, 0, 0.7f);
-        move(planetDisplay, 600, 0);
+        //move(map, 1100, 0, 0.7f);
+        moveAndRender(planetDisplay, 600, 0);
+        map.render();
 
         if (checkKey(LEFT))
         {
@@ -67,7 +68,7 @@ public class UI extends PApplet
         }
     }
 
-    public void move(Render obj, int x, int y, float scale)
+    public void moveAndRender(Render obj, int x, int y, float scale)
     {
         pushMatrix();
         scale(scale);
@@ -76,7 +77,7 @@ public class UI extends PApplet
         popMatrix();
     }
     
-    public void move(Render obj, int x, int y)
+    public void moveAndRender(Render obj, int x, int y)
     {
         pushMatrix();
         translate(x, y);

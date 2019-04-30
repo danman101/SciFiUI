@@ -7,6 +7,7 @@ public class Planet
     private String displayName;
     private String image;
     private String colour;
+    private float angle;
 
     public void setDisplayName(String displayName)
     {
@@ -33,6 +34,11 @@ public class Planet
         return colour;
     }
 
+    public float getAngle()
+    {
+        return angle;
+    }
+
     public String toString()
     {
         return displayName;  
@@ -43,6 +49,6 @@ public class Planet
         displayName = row.getString("Display Name");
         image = row.getString("Image");
         colour = row.getString("Colour");
+        angle = row.getFloat("Angle");
     }
-
 }
