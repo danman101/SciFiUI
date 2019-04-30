@@ -5,9 +5,9 @@ public class ShipPart
     private String title;
     private boolean damaged;
 
-    public ShipPart(String title)
+    public ShipPart(String t)
     {
-        this.title = title;
+        this.title = t;
         this.damaged = false;
     }
 
@@ -18,16 +18,16 @@ public class ShipPart
 
     public boolean getDamaged()
     {
-        return this.damaged;
+        return damaged;
     }
 
-    public void setTitle(boolean damaged)
+    public void setTitle(String title)
     {
-        this.damaged = damaged;
+        this.title = title;
     }
 
     public String getTitle()
     {
-        return this.title;
+        return title;
     }
 }

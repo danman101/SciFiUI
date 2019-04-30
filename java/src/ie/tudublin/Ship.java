@@ -2,7 +2,7 @@ package ie.tudublin;
 
 import java.util.ArrayList;
 
-public class Ship implements Render{
+public class Ship{
 
     ArrayList<ShipPart> shipParts = new ArrayList<ShipPart>();
     UI ui;
@@ -16,26 +16,30 @@ public class Ship implements Render{
         shipParts.add(new ShipPart("Nose"));
     }
 
-    public void render(float mX, float mY)
+    public void render()
     {
-         for(ShipPart shipPart : shipParts)
-         { 
-            /*
-            ui.pushMatrix();
-            ui.translate(400,0);
-            drawPart(shipParts.get(0));
-            ui.popMatrix();*/
-           // drawPart(shipPart);
-        }
-        drawPart(shipParts.get(2));
+        drawShip();
+    }
+
+    public ArrayList<ShipPart> getParts()
+    {
+        return this.shipParts;
     }
 
     public void drawPart(ShipPart shipPart)
-    {
+    {   
+        ui.stroke(255, 255, 255);
+        ui.fill(255,255,255);
+        ui.beginShape();
+        
+        if(shipPart.getDamaged() == true)
+        {
+            ui.fill(255, 0, 0);
+            ui.stroke(255, 0, 0);
+        }
+
         if (shipPart.getTitle().equals("Body"))
         {
-            ui.stroke(255, 255, 255);
-            ui.beginShape();
             ui.vertex(0, 0);
             ui.vertex(0, 50);
             ui.vertex(5, 50);
@@ -44,13 +48,10 @@ public class Ship implements Render{
             ui.vertex(75, 50);
             ui.vertex(80, 50);
             ui.vertex(80, 0);
-            ui.endShape(UI.CLOSE);
         }
 
         if (shipPart.getTitle().equals("Nose"))
         {
-            ui.stroke(255, 255, 255);
-            ui.beginShape();
             ui.vertex(20, 0);
             ui.vertex(20, 100);
             ui.vertex(10, 100);
@@ -59,13 +60,10 @@ public class Ship implements Render{
             ui.vertex(40, 100);
             ui.vertex(30, 100);
             ui.vertex(30, 0);
-            ui.endShape(UI.CLOSE);
         }
 
         if (shipPart.getTitle().equals("Left Wing"))
         {
-            ui.stroke(255, 255, 255);
-            ui.beginShape();
             ui.vertex(0, 0);
             ui.vertex(0, 70);
             ui.vertex(10, 70);
@@ -75,13 +73,10 @@ public class Ship implements Render{
             ui.vertex(10, 45);
             ui.vertex(10, 0);
             ui.vertex(0, 0);
-            ui.endShape(UI.CLOSE);
         }
 
         if (shipPart.getTitle().equals("Right Wing"))
         {
-            ui.stroke(255, 255, 255);
-            ui.beginShape();
             ui.vertex(20, 0);
             ui.vertex(20, 70);
             ui.vertex(10, 70);
@@ -90,14 +85,49 @@ public class Ship implements Render{
             ui.vertex(0, 45);
             ui.vertex(10, 45);
             ui.vertex(10, 0);
-            ui.vertex(0, 0);
-            ui.endShape(UI.CLOSE);
+            ui.vertex(20, 0);
         }
+
+        ui.endShape(UI.CLOSE);
     }
 
-    public void buildShip()
+    public void drawShip()
     {
+        for(ShipPart shipPart : shipParts)
+        {
+            if(shipPart.getTitle().equals("Body"))
+            {
+                ui.pushMatrix();
+                ui.translate(150, 150);
+                drawPart(shipPart);
+                ui.popMatrix();
+            }
 
+            if(shipPart.getTitle().equals("Nose"))
+            {
+                ui.pushMatrix();
+                ui.translate(165, 15);
+                drawPart(shipPart);
+                ui.popMatrix();
+            }
+            
+            if(shipPart.getTitle().equals("Left Wing"))
+            {
+                ui.pushMatrix();
+                ui.translate(120, 115);
+                drawPart(shipPart);
+                ui.popMatrix();
+            }
+            
+            if(shipPart.getTitle().equals("Right Wing"))
+            {
+                ui.pushMatrix();
+                ui.translate(240, 115);
+                drawPart(shipPart);
+                ui.popMatrix();
+            }
+        }
+        
     }
-    
+
 }

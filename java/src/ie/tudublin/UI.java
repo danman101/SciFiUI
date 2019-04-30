@@ -42,6 +42,7 @@ public class UI extends PApplet
         map = new NavigationMap(this);
         planetDisplay = new PlanetDisplay(this);
         ship = new Ship(this);
+        ship.getParts().get(0).setDamaged(true);
     }
 
     Radar radar;
@@ -59,7 +60,7 @@ public class UI extends PApplet
 
         moveAndRender(map, 1100, 0, 0.7f);
         moveAndRender(planetDisplay, 600, 0);
-        ship.render(mouseX, mouseY);
+        ship.render();
 
         if (checkKey(LEFT))
         {
