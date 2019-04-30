@@ -12,9 +12,10 @@ public class Planet
     public float x;
     public float y;
     private boolean selected;
+    NavigationMap nav;
     UI ui;
 
-    public Planet(TableRow row, UI ui)
+    public Planet(TableRow row, UI ui, NavigationMap nav)
     {
         displayName = row.getString("Display Name");
         image = row.getString("Image");
@@ -23,6 +24,7 @@ public class Planet
         width = 30.0f;
         this.ui = ui;
         selected = false;
+        this.nav = nav;
     }
 
     public void setDisplayName(String displayName)
@@ -105,11 +107,16 @@ public class Planet
         return this.selected;
     }
     
-    boolean isOver() {
-        if (UI.dist(x, y, NavigationMap.mX, NavigationMap.mY) < this.width)
-          return true;
+    public boolean isOver()
+    {
+        if (UI.dist(x, y, nav.mX, nav.mY) < this.width)
+        {
+            return true;
+        }
         else
-          return false;
-      }
+        {
+            return false;
+        }
+    }
     
 }

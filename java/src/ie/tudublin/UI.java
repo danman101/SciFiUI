@@ -4,7 +4,7 @@ import processing.core.PApplet;
 
 public class UI extends PApplet
 {
-    Button b;
+    Button button;
     MovingCircle mc;
     NavigationMap map;
     PlanetDisplay planetDisplay;
@@ -36,13 +36,12 @@ public class UI extends PApplet
 
     public void setup()
     {
-        b = new Button(this, 50, 50, 100, 50, "I am a button");
+        button = new Button(this, 50, 50, 100, 50, "I am a button");
         mc = new MovingCircle(this, width / 2, height * .75f, 50);
         radar = new Radar(this, 1, width / 2, height / 2, 100);
         map = new NavigationMap(this);
         planetDisplay = new PlanetDisplay(this);
         ship = new Ship(this);
-        ship.getParts().get(0).setDamaged(true);
     }
 
     Radar radar;
@@ -51,15 +50,15 @@ public class UI extends PApplet
     {
         background(0);
         
-        // b.render();
+        
         // mc.update();
         //mc.render();
         //radar.update();
         //radar.render();
         
-
         moveAndRender(map, 1100, 0, 0.7f);
-        moveAndRender(planetDisplay, 600, 0);
+        moveAndRender(planetDisplay, 600, 70);
+        moveAndRender(button, 300, 300);
         ship.render();
 
         if (checkKey(LEFT))
@@ -101,6 +100,11 @@ public class UI extends PApplet
                 planetDisplay.setPlanet(planet);
                 planet.setSelected(true);
             }
+        }
+
+        if (button.isOver())
+        {
+            System.out.println("Over");
         }
     }
 }

@@ -15,8 +15,8 @@ public class NavigationMap implements Render
     float t = UI.PI;
     int[] ringWidth = {145, 265, 385, 505, 625};
     private ArrayList<Planet> planets = new ArrayList<Planet>();
-    static float mX;
-    static float mY;
+    float mX;
+    float mY;
     public NavigationMap(UI ui)
     {
         this.ui = ui;
@@ -44,7 +44,7 @@ public class NavigationMap implements Render
         
         for(TableRow row:table.rows())
         {
-            Planet planet = new Planet(row, ui);
+            Planet planet = new Planet(row, ui, this);
             planets.add(planet);  
         }
     }
