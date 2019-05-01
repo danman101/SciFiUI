@@ -54,11 +54,15 @@ public class UI extends PApplet
         
         moveAndRender(map, 550, 30, 0.7f);
         moveAndRender(planetDisplay, 200, 100);
-        moveAndRender(launch, 340, 320, 1.5f);
+        moveAndRender(launch, 100, 320, 1.5f);
         moveAndRender(repair, 587, 320, 1.5f);
         moveAndRender(radar, 1000, 160);
         moveAndRender(ship, 1100, 120, 0.8f);
         moveAndRender(travel, 930, 100);
+        
+        fill(113, 247, 17);
+        triangle(440, 560, 660, 560, 660, 650);
+        triangle(675, 560, 895, 560, 675, 650);
     }
 
     public void moveAndRender(Render obj, int x, int y, float scale)
@@ -87,6 +91,7 @@ public class UI extends PApplet
                 planetDisplay.getSelectedPlanet().setSelected(false);
             }
         }
+
         for(Planet planet : map.getPlanets())
         {
             if (planet.isOver() == true)

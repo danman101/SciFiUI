@@ -16,6 +16,7 @@ public class NavigationMap implements Render
     private ArrayList<Planet> planets = new ArrayList<Planet>();
     float mX;
     float mY;
+    
     public NavigationMap(UI ui)
     {
         this.ui = ui;
@@ -113,6 +114,7 @@ public class NavigationMap implements Render
                 ui.fill(61, 159, 229);
                 ui.stroke(61, 159, 229);
             }
+
             ui.ellipse(planet.getX(), planet.getY(), planet.getWidth(), planet.getWidth());
             
             if(planet.isOver() == true)
