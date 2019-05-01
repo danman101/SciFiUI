@@ -240,6 +240,7 @@ beside the corresponding planet. The cursor is also well designed and matches th
 
 #Youtube link
 
-[![YouTube](https://www.youtube.com/watch?v=E032gDBkyDA&feature=youtu.be)
+https://www.youtube.com/watch?v=E032gDBkyDA&feature=youtu.be/
+
 
 
