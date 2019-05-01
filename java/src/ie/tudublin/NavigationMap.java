@@ -16,7 +16,7 @@ public class NavigationMap implements Render
     private ArrayList<Planet> planets = new ArrayList<Planet>();
     float mX;
     float mY;
-    
+
     public NavigationMap(UI ui)
     {
         this.ui = ui;
@@ -28,6 +28,7 @@ public class NavigationMap implements Render
         this.mX = mX;
         this.mY = mY;
         drawMap();
+        drawMapRings();
         drawPlanets();
         drawCursor();
         updatePlanetAngle();
@@ -79,7 +80,6 @@ public class NavigationMap implements Render
             ui.line(x, gap, x, height - gap);
             ui.line(gap, height + y, width - gap, height + y);
         }
-        drawMapRings();
     }
     
     void drawMapRings()
