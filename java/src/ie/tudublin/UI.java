@@ -37,7 +37,7 @@ public class UI extends PApplet
     public void setup()
     {
         button = new Button(this, 50, 50, 100, 50, "Launch");
-        radar = new Radar(this, 1, width / 2, height / 2, 100);
+        radar = new Radar(this, 0.2f, 30, 30, 100);
         map = new NavigationMap(this);
         planetDisplay = new PlanetDisplay(this);
         ship = new Ship(this);
@@ -50,13 +50,11 @@ public class UI extends PApplet
     {
         background(0, 8, 17);
         
-        //radar.update();
-        //radar.render();
-        
         moveAndRender(map, 550, 30, 0.7f);
         moveAndRender(planetDisplay, 200, 100);
         moveAndRender(button, 340, 320, 1.5f);
-        moveAndRender(ship, 840, 50);
+        moveAndRender(radar, 1000, 150);
+        moveAndRender(ship, 1100, 100, 0.8f);
         moveAndRender(travel, 930, 100);
     }
 

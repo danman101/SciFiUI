@@ -3,13 +3,15 @@ package ie.tudublin;
 import processing.core.PApplet;
 import processing.core.PVector;
 
-public class Radar
+public class Radar implements Render
 {
     private float radius;
     private PVector pos;
     private float frequency;
     private UI ui;
     private float theta = 0;
+    private float mX;
+    private float mY;
 
     public Radar(UI ui, float frequency, float x, float y, float radius)
     {
@@ -19,7 +21,7 @@ public class Radar
         this.radius = radius;
     }
 
-    public void render()
+    public void render(float mX, float mY)
     {
         /*ui.pushMatrix();        
         ui.noFill();
@@ -30,12 +32,16 @@ public class Radar
         ui.line(0,0,0,-radius);
         ui.popMatrix();
         */
-
+        this.mX = mX;
+        this.mY = mY;
+        
+        ui.stroke(113, 247, 17);
         ui.noFill();
         ui.ellipse(pos.x, pos.y, radius * 2, radius * 2);
         float x2 = pos.x + (float) Math.sin(theta) * radius;
         float y2 = pos.y - (float) Math.cos(theta) * radius;
         ui.line(pos.x, pos.y, x2, y2);
+        update();
     }
 
     float timeDelta = 1.0f / 60.0f;

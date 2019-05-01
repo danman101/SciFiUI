@@ -32,8 +32,8 @@ public class Ship implements Render{
 
     public void drawPart(ShipPart shipPart)
     {   
-        ui.stroke(255, 255, 255);
-        ui.fill(255,255,255);
+        ui.stroke(61, 159, 229);
+        ui.fill(61, 159, 229);
         ui.beginShape();
         
         if(shipPart.getDamaged() == true)
