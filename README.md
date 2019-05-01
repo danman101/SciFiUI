@@ -229,7 +229,7 @@ By passing the following formula, I was able to pass a transformed variation of 
 so the each transformed object would respond correctly to mouse movement.
 
 Formula (as seen above):
-(1/scale) * mouseX -x,(1/scale) * mouseY -y
+mx = (1/scale) * mouseX -x, mY = (1/scale) * mouseY -y
 
 # What I am most proud of in the assignment
 
@@ -238,7 +238,7 @@ create. I had to figure out how to move the planets along each arc using trigono
 a grid. I also think it is aesthetically pleasing, and I like how when hovering over a planet the name appears and continues to move
 beside the corresponding planet. The cursor is also well designed and matches the aesthetic of the interface.
 
-#Youtube link
+# Youtube link
 
 https://www.youtube.com/watch?v=E032gDBkyDA&feature=youtu.be/
 
