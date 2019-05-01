@@ -56,24 +56,32 @@ public class SpaceTravel implements Render {
     public void drawDiagnostics()
     {
         int textY = windowHeight + 80;
-        ui.noFill();
-        ui.stroke(255,255,255);
+        ui.textSize(20);
+        ui.fill(40, 201, 198);
         ui.textAlign(UI.LEFT);
         ui.text("Diagnostics", 2, windowHeight + 40);
 
         for(ShipPart shipPart : ship.getParts())
         {
+            ui.noFill();
+            ui.stroke(113, 247, 17);
             ui.rect(0, windowHeight + 20, windowWidth, windowHeight);
-            ui.textSize(20);
+            ui.textSize(15);
             String status;
             if(shipPart.getDamaged())
             {
+                ui.fill(242, 25, 21);
                 status = "Critical";
             }
-            else status = "Stable";
+            else 
+            {
+                ui.fill(40, 201, 198);
+                status = "Stable";
+            }
 
             ui.text(shipPart.getTitle() + " : " + status, 0, textY);
             textY += 30;
+            ui.noFill();
         }
     }
 

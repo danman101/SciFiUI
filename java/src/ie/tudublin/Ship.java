@@ -99,6 +99,8 @@ public class Ship{
         }
 
         ui.endShape(UI.CLOSE);
+        ui.noFill();
+        ui.noStroke();
     }
 
     public void drawShip()

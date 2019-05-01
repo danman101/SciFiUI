@@ -104,16 +104,20 @@ public class NavigationMap implements Render
             
             if(planet.getSelected()==true)
             {
-                ui.fill(40, 40, 40);
-                ui.stroke(40, 40, 40);
+                ui.fill(113, 247, 17);
+                ui.stroke(113, 247, 17);
             }
             else
             {
-                ui.fill(244, 244, 244);
-                ui.stroke(244, 244, 244);
+                ui.fill(61, 159, 229);
+                ui.stroke(61, 159, 229);
             }
             ui.ellipse(planet.getX(), planet.getY(), planet.getWidth(), planet.getWidth());
-            //ui.text(planet.getDisplayName(), x+10, y+4);
+            
+            if(planet.isOver() == true)
+            {
+                ui.text(planet.getDisplayName(), planet.getX()+20, planet.getY()+6);
+            }
 
             k++;
             if (k == 2 )
