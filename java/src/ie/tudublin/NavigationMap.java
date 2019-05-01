@@ -60,11 +60,16 @@ public class NavigationMap implements Render
     void drawMap()
     {
         float gap = width / 12;
-        ui.stroke(255);
         int n = 10;
         int x = 0;
         int y = 0;
-        ui.stroke(244, 66, 232);
+
+        ui.stroke(113, 247, 17);
+        ui.fill(3, 9, 43);
+        ui.rect(width/12, width/12, 670, 670);
+        ui.noFill();
+        ui.stroke(40, 201, 198, 255/2);
+
         for(int i =0; i <= n; i++)
         {
             x+=gap;
@@ -78,7 +83,7 @@ public class NavigationMap implements Render
     void drawMapRings()
     {
         ui.noFill();
-        ui.stroke(255);
+        ui.stroke(61, 159, 229);
         for(int i = 0; i < 5; i++)
         {
             ui.ellipse(width/2, height/2, ringWidth[i], ringWidth[i]);
@@ -130,7 +135,7 @@ public class NavigationMap implements Render
     void drawCursor()
     {   
         ui.noFill();
-        ui.stroke(244, 66, 66);
+        ui.stroke(113, 247, 17);
         
         ui.arc(mX, mY, 50, 50, 0 - UI.HALF_PI/3, UI.HALF_PI/3);
         ui.arc(mX, mY, 50, 50, (3 * UI.PI/2) - UI.HALF_PI/3, (3 * UI.PI /2) + UI.HALF_PI/3);

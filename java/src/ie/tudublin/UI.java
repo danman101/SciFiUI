@@ -55,9 +55,9 @@ public class UI extends PApplet
         
         moveAndRender(map, 1100, 0, 0.7f);
         moveAndRender(planetDisplay, 600, 70);
-        moveAndRender(button, 300, 300);
+        moveAndRender(button, 300, 500);
         ship.render();
-        travel.render();
+        moveAndRender(travel, 300, 70);
     }
 
     public void moveAndRender(Render obj, int x, int y, float scale)

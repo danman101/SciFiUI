@@ -2,7 +2,7 @@ package ie.tudublin;
 
 import java.util.Random;
 
-public class SpaceTravel {
+public class SpaceTravel implements Render {
     
     private Planet currentPlanet;
     private Planet selectedPlanet;
@@ -12,6 +12,8 @@ public class SpaceTravel {
     private int lower;
     private Random random;
     private int result;
+    float mX;
+    float mY;
     UI ui;
     private int windowHeight;
     private int windowWidth;
@@ -21,14 +23,16 @@ public class SpaceTravel {
         this.ui = ui;
         this.ship = ship;
         random = new Random();
-        upper = 4;
+        upper = 5;
         lower = 0;
         this.windowHeight = 200;
         this.windowWidth = 200;
     }
 
-    public void render()
+    public void render(float mx, float my)
     {
+        this.mX = mx;
+        this.mY = my;
         update();
         drawDiagnostics();
     }
@@ -40,7 +44,7 @@ public class SpaceTravel {
             currentPlanet = selectedPlanet;
             result = random.nextInt(upper - lower) + lower;
 
-            if(result == 3)
+            if(result == 4)
             {
                 result = random.nextInt(upper - lower) + lower;
                 ship.getParts().get(result).setDamaged(true);

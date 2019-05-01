@@ -14,6 +14,7 @@ public class Ship{
         shipParts.add(new ShipPart("Left Wing"));
         shipParts.add(new ShipPart("Right Wing"));
         shipParts.add(new ShipPart("Nose"));
+        shipParts.add(new ShipPart("Engines"));
     }
 
     public void render()
@@ -88,6 +89,15 @@ public class Ship{
             ui.vertex(20, 0);
         }
 
+        if (shipPart.getTitle().equals("Engines"))
+        {
+            ui.vertex(0, 0);
+            ui.vertex(0, 15);
+            ui.vertex(13, 15);
+            ui.vertex(13, 0);
+            ui.vertex(0, 0);
+        }
+
         ui.endShape(UI.CLOSE);
     }
 
@@ -114,7 +124,7 @@ public class Ship{
             if(shipPart.getTitle().equals("Left Wing"))
             {
                 ui.pushMatrix();
-                ui.translate(120, 115);
+                ui.translate(125, 115);
                 drawPart(shipPart);
                 ui.popMatrix();
             }
@@ -122,12 +132,23 @@ public class Ship{
             if(shipPart.getTitle().equals("Right Wing"))
             {
                 ui.pushMatrix();
-                ui.translate(240, 115);
+                ui.translate(235, 115);
                 drawPart(shipPart);
                 ui.popMatrix();
             }
-        }
-        
-    }
 
+            if(shipPart.getTitle().equals("Engines"))
+            {
+                int x = 170;
+                for(int i = 0; i < 2; i++)
+                {
+                    ui.pushMatrix();
+                    ui.translate(x, 200);
+                    drawPart(shipPart);
+                    ui.popMatrix();
+                    x = 200;
+                }
+            }
+        }
+    }
 }
