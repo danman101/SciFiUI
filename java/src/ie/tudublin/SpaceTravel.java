@@ -12,13 +12,25 @@ public class SpaceTravel {
     private int lower;
     private Random random;
     private int result;
+    UI ui;
+    private int windowHeight;
+    private int windowWidth;
 
-    public SpaceTravel(Ship ship)
+    public SpaceTravel(Ship ship, UI ui)
     {
+        this.ui = ui;
         this.ship = ship;
         random = new Random();
         upper = 4;
         lower = 0;
+        this.windowHeight = 200;
+        this.windowWidth = 200;
+    }
+
+    public void render()
+    {
+        update();
+        drawDiagnostics();
     }
 
     public void update()
@@ -27,13 +39,37 @@ public class SpaceTravel {
         {
             currentPlanet = selectedPlanet;
             result = random.nextInt(upper - lower) + lower;
-            System.out.println(result);
+
             if(result == 3)
             {
                 result = random.nextInt(upper - lower) + lower;
                 ship.getParts().get(result).setDamaged(true);
             }
             clicked = false;
+        }
+    }
+
+    public void drawDiagnostics()
+    {
+        int textY = windowHeight + 80;
+        ui.noFill();
+        ui.stroke(255,255,255);
+        ui.textAlign(UI.LEFT);
+        ui.text("Diagnostics", 2, windowHeight + 40);
+
+        for(ShipPart shipPart : ship.getParts())
+        {
+            ui.rect(0, windowHeight + 20, windowWidth, windowHeight);
+            ui.textSize(20);
+            String status;
+            if(shipPart.getDamaged())
+            {
+                status = "Critical";
+            }
+            else status = "Stable";
+
+            ui.text(shipPart.getTitle() + " : " + status, 0, textY);
+            textY += 30;
         }
     }
 

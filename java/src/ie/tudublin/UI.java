@@ -5,7 +5,6 @@ import processing.core.PApplet;
 public class UI extends PApplet
 {
     Button button;
-    MovingCircle mc;
     NavigationMap map;
     PlanetDisplay planetDisplay;
     boolean[] keys = new boolean[1024];
@@ -37,13 +36,12 @@ public class UI extends PApplet
 
     public void setup()
     {
-        button = new Button(this, 50, 50, 100, 50, "I am a button");
-        mc = new MovingCircle(this, width / 2, height * .75f, 50);
+        button = new Button(this, 50, 50, 100, 50, "Launch");
         radar = new Radar(this, 1, width / 2, height / 2, 100);
         map = new NavigationMap(this);
         planetDisplay = new PlanetDisplay(this);
         ship = new Ship(this);
-        travel = new SpaceTravel(ship);
+        travel = new SpaceTravel(ship, this);
     }
 
     Radar radar;
@@ -52,8 +50,6 @@ public class UI extends PApplet
     {
         background(0);
         
-        //mc.update();
-        //mc.render();
         //radar.update();
         //radar.render();
         
@@ -61,7 +57,7 @@ public class UI extends PApplet
         moveAndRender(planetDisplay, 600, 70);
         moveAndRender(button, 300, 300);
         ship.render();
-        travel.update();
+        travel.render();
     }
 
     public void moveAndRender(Render obj, int x, int y, float scale)
