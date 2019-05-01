@@ -6,7 +6,9 @@ public class PlanetDisplay implements Render{
 
     private int windowHeight;
     private int windowWidth;
+    private boolean launchClicked;
     private Planet selectedPlanet;
+    private Planet currentPlanet;
     SpaceTravel travel;
     UI ui;
     PImage image;
@@ -16,6 +18,7 @@ public class PlanetDisplay implements Render{
         this.windowHeight = 200;
         this.windowWidth = 200; 
         this.ui = ui;
+        launchClicked = false;
     }
 
     public void setSelectedPlanet(Planet planet)
@@ -49,14 +52,40 @@ public class PlanetDisplay implements Render{
         ui.rect(0, windowHeight + 20, windowWidth, windowHeight);
         ui.textSize(15);
         ui.fill(40, 201, 198);
-        ui.text("Planet Selected:", 5, windowHeight + 40);
+
+        if (launchClicked == true)
+        {
+            currentPlanet = selectedPlanet;
+            launchClicked = false;
+        }
+
+        String selectPlanetText =  "Selected Planet: ";
+        String currentPlanetText =  "Current Planet: ";
+
         if(selectedPlanet != null)
         {
-            ui.text(selectedPlanet.getDisplayName(), 5, windowHeight + 70);
+            selectPlanetText += selectedPlanet.getDisplayName();
         }
         else 
         {
-            ui.text("None", 5, windowHeight +70);
+            selectPlanetText += "N/A";
         }
+        
+        if(currentPlanet != null)
+        {
+            currentPlanetText += currentPlanet.getDisplayName();
+        }
+        else 
+        {
+            currentPlanetText += "N/A";
+        }
+        
+        ui.text(selectPlanetText, 5, windowHeight + 40);
+        ui.text(currentPlanetText, 5, windowHeight + 70);
+    }
+    
+    public void setClicked(boolean launchClicked)
+    {
+        this.launchClicked = launchClicked;
     }
 }

@@ -98,6 +98,7 @@ public class UI extends PApplet
 
         if (launch.isOver())
         {
+            planetDisplay.setClicked(true);
             travel.setClicked(true);
         }
 

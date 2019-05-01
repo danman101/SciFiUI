@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class SpaceTravel implements Render {
     
-    private boolean clicked = false;
+    private boolean repairClicked = false;
     private Ship ship;
     private int breakUpper;
     private int breakLower;
@@ -41,7 +41,7 @@ public class SpaceTravel implements Render {
 
     public void update()
     {
-        if (clicked == true)
+        if (repairClicked == true)
         {
             result = random.nextInt(breakUpper - breakLower) + breakLower;
 
@@ -50,7 +50,7 @@ public class SpaceTravel implements Render {
                 result = random.nextInt(partUpper - partLower) + partLower;
                 ship.getParts().get(result).setDamaged(true);
             }
-            clicked = false;
+            repairClicked = false;
         }
     }
 
@@ -92,8 +92,8 @@ public class SpaceTravel implements Render {
         }
     }
 
-    public void setClicked(boolean clicked)
+    public void setClicked(boolean repairClicked)
     {
-        this.clicked = clicked;
+        this.repairClicked = repairClicked;
     }
 }
