@@ -10,6 +10,8 @@ Student Number: D18124733
 The program represents the user interface of a navigation system for a space ship. The center navigation
 map contains different circles traversing along seperate arcs. These circles represent planets of the solar system,
 with the arcs representing their orbital paths. The program allows functionality to 'travel' to selected planets.
+The program also displays an created ship icon containing the seperate parts of the ship. These parts change colour 
+depending on the state of the part. The user can click on a button to repair these parts if in a damaged state.
 
 # Instructions
 
@@ -77,10 +79,10 @@ would continually readjust each planets angle. This results in each planet movin
 
 ### PlanetsDisplay
 
-This clas was responsible for displaying the image of the planet, along with displaying the selected planet and the current planet.
+This class was responsible for displaying the image of the planet, along with displaying the selected planet and the current planet.
 Mouse click was done from outside the class, using the mouseClicked method in the UI class. 
 The class contains is responsible for switching the selectedPlanet into currentPlanet upon clicking the launch button (which is
-a seperate class). The image was loaded from the planets image variable, which was loaded from the csv file.
+a seperate class).
 
 ### ShipPart
 
@@ -221,8 +223,8 @@ public void moveAndRender(Render obj, int x, int y, float scale)
 }
 ```
 
-moveAndRender was created as it reduced the need to keep typing out the same matrix transformations. Here we can also see 
-how I dealt with how mouseX/mouseY relate to something that is transformed using a matrix.
+moveAndRender was created as it reduced the need to keep typing out the same matrix transformations. 
+Here we can also see  how I dealt with how mouseX/mouseY relate to something that is transformed using a matrix.
 By passing the following formula, I was able to pass a transformed variation of mouseX/mouseY,
 so the each transformed object would respond correctly to mouse movement.
 
@@ -231,76 +233,13 @@ Formula (as seen above):
 
 # What I am most proud of in the assignment
 
-I am most proud of the Navigation Map, as it incorporated lot's of various techniques and multiple parts to
+I am most proud of the Navigation Map, as it incorporated lots of various techniques and multiple parts to
 create. I had to figure out how to move the planets along each arc using trigonometric functions. I also had to figure out a way to draw
 a grid. I also think it is aesthetically pleasing, and I like how when hovering over a planet the name appears and continues to move
-beside the corresponding planet.
+beside the corresponding planet. The cursor is also well designed and matches the aesthetic of the interface.
 
-# Markdown Tutorial
+#Youtube link
 
-This is *emphasis*
+[![YouTube](https://www.youtube.com/watch?v=E032gDBkyDA&feature=youtu.be)
 
-This is a bulleted list
-
-- Item
-- Item
-
-This is a numbered list
-
-1. Item
-1. Item
-
-This is a [hyperlink](http://bryanduggan.org)
-
-# Headings
-## Headings
-#### Headings
-##### Headings
-
-This is code:
-
-```Java
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-So is this without specifying the language:
-
-```
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-This is an image using a relative URL:
-
-![An image](images/p8.png)
-
-This is an image using an absolute URL:
-
-![A different image](https://bryanduggandotorg.files.wordpress.com/2019/02/infinite-forms-00045.png?w=595&h=&zoom=2)
-
-This is a youtube video:
-
-[![YouTube](http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](https://www.youtube.com/watch?v=J2kHSSFA4NU)
-
-This is a table:
-
-| Heading 1 | Heading 2 |
-|-----------|-----------|
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
 
