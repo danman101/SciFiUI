@@ -40,8 +40,8 @@ public class UI extends PApplet
         launch = new Button(this, 50, 50, 100, 50, "Launch");
         repair = new Button(this, 50, 50, 100, 50, "Repair");
         radar = new Radar(this, 0.2f, 30, 30, 100);
-        map = new NavigationMap(this);
         planetDisplay = new PlanetDisplay(this);
+        map = new NavigationMap(this);
         ship = new Ship(this);
         travel = new SpaceTravel(ship, this);
     }
@@ -82,18 +82,17 @@ public class UI extends PApplet
     {   
         for(Planet planet : map.getPlanets())
         {
-            if(planetDisplay.getPlanet() != null && planet.isOver() == true && planetDisplay.getPlanet() != planet)
+            if(planetDisplay.getSelectedPlanet() != null && planet.isOver() == true && planetDisplay.getSelectedPlanet() != planet)
             {
-                planetDisplay.getPlanet().setSelected(false);
+                planetDisplay.getSelectedPlanet().setSelected(false);
             }
         }
         for(Planet planet : map.getPlanets())
         {
             if (planet.isOver() == true)
             {
-                planetDisplay.setPlanet(planet);
+                planetDisplay.setSelectedPlanet(planet);
                 planet.setSelected(true);
-                travel.setSelectedPlanet(planet);
             }
         }
 

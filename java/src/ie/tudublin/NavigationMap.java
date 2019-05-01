@@ -124,7 +124,7 @@ public class NavigationMap implements Render
             if (k == 2 )
             {
                 i++;
-                k= 0;
+                k = 0;
             }
         }
     }

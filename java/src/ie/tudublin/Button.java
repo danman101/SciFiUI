@@ -32,6 +32,11 @@ public class Button implements Render
         ui.noFill();
         ui.stroke(113, 247, 17);
         ui.rect(x, y, width, height);
+        if(isOver())
+        {   
+            ui.fill(113, 247, 17);
+        }
+        else ui.fill(40, 201, 198);
         ui.textAlign(PApplet.CENTER, PApplet.CENTER);
         ui.text(text, x + width * 0.5f, y + height * 0.45f);
     }

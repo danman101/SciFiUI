@@ -6,7 +6,8 @@ public class PlanetDisplay implements Render{
 
     private int windowHeight;
     private int windowWidth;
-    private Planet planet;
+    private Planet selectedPlanet;
+    SpaceTravel travel;
     UI ui;
     PImage image;
 
@@ -17,15 +18,15 @@ public class PlanetDisplay implements Render{
         this.ui = ui;
     }
 
-    public void setPlanet(Planet planet)
+    public void setSelectedPlanet(Planet planet)
     {
-        this.planet = planet;
+        this.selectedPlanet = planet;
         this.image = ui.loadImage(planet.getImage());
     }
 
-    public Planet getPlanet()
+    public Planet getSelectedPlanet()
     {
-        return this.planet;
+        return this.selectedPlanet;
     }
 
     public void render(float mX, float mY)
@@ -37,7 +38,7 @@ public class PlanetDisplay implements Render{
     public void drawPlanetBox()
     {
         ui.rect(0, 0, windowWidth, windowHeight);
-        if (planet != null)
+        if (selectedPlanet != null)
         {   
             ui.image(image, 1,1, windowHeight-1, windowWidth-1);
         }
@@ -46,10 +47,16 @@ public class PlanetDisplay implements Render{
     public void drawInfoBox()
     {
         ui.rect(0, windowHeight + 20, windowWidth, windowHeight);
-        ui.textSize(20);
-        if(planet != null)
+        ui.textSize(15);
+        ui.fill(40, 201, 198);
+        ui.text("Planet Selected:", 5, windowHeight + 40);
+        if(selectedPlanet != null)
         {
-            ui.text(planet.getDisplayName(), 2, windowHeight + 40);
+            ui.text(selectedPlanet.getDisplayName(), 5, windowHeight + 70);
+        }
+        else 
+        {
+            ui.text("None", 5, windowHeight +70);
         }
     }
 }

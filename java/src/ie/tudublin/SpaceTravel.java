@@ -4,8 +4,6 @@ import java.util.Random;
 
 public class SpaceTravel implements Render {
     
-    private Planet currentPlanet;
-    private Planet selectedPlanet;
     private boolean clicked = false;
     private Ship ship;
     private int breakUpper;
@@ -43,9 +41,8 @@ public class SpaceTravel implements Render {
 
     public void update()
     {
-        if (clicked == true && selectedPlanet != null)
+        if (clicked == true)
         {
-            currentPlanet = selectedPlanet;
             result = random.nextInt(breakUpper - breakLower) + breakLower;
 
             if(result == 2)
@@ -61,7 +58,7 @@ public class SpaceTravel implements Render {
     {
         int textY = windowHeight + 80;
         ui.textSize(20);
-        ui.fill(40, 201, 198);
+        ui.fill(113, 247, 17);
         ui.textAlign(UI.LEFT);
         ui.text("Diagnostics", 5, windowHeight + 45);
 
@@ -95,18 +92,8 @@ public class SpaceTravel implements Render {
         }
     }
 
-    public Planet getCurrentPlanet()
-    {
-        return this.currentPlanet;
-    }
-
     public void setClicked(boolean clicked)
     {
         this.clicked = clicked;
-    }
-
-    public void setSelectedPlanet(Planet s)
-    {
-        this.selectedPlanet = s;
     }
 }
