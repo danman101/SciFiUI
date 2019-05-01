@@ -48,16 +48,16 @@ public class UI extends PApplet
 
     public void draw()
     {
-        background(0);
+        background(0, 8, 17);
         
         //radar.update();
         //radar.render();
         
-        moveAndRender(map, 1100, 0, 0.7f);
-        moveAndRender(planetDisplay, 600, 70);
-        moveAndRender(button, 300, 500);
-        ship.render();
-        moveAndRender(travel, 300, 70);
+        moveAndRender(map, 550, 30, 0.7f);
+        moveAndRender(planetDisplay, 200, 100);
+        moveAndRender(button, 340, 320, 1.5f);
+        moveAndRender(ship, 840, 50);
+        moveAndRender(travel, 930, 100);
     }
 
     public void moveAndRender(Render obj, int x, int y, float scale)

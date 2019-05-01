@@ -2,10 +2,12 @@ package ie.tudublin;
 
 import java.util.ArrayList;
 
-public class Ship{
+public class Ship implements Render{
 
     ArrayList<ShipPart> shipParts = new ArrayList<ShipPart>();
     UI ui;
+    float mX;
+    float mY;
 
     public Ship(UI ui)
     {
@@ -17,8 +19,9 @@ public class Ship{
         shipParts.add(new ShipPart("Engines"));
     }
 
-    public void render()
+    public void render(float mX, float mY)
     {
+        this.mX = this.mY;
         drawShip();
     }
 

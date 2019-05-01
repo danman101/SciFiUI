@@ -30,7 +30,7 @@ public class Button implements Render
         this.mX = mX;
         this.mY = mY;
         ui.noFill();
-        ui.stroke(255);
+        ui.stroke(113, 247, 17);
         ui.rect(x, y, width, height);
         ui.textAlign(PApplet.CENTER, PApplet.CENTER);
         ui.text(text, x + width * 0.5f, y + height * 0.5f);
