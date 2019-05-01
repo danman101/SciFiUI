@@ -4,7 +4,8 @@ import processing.core.PApplet;
 
 public class UI extends PApplet
 {
-    Button button;
+    Button launch;
+    Button repair;
     NavigationMap map;
     PlanetDisplay planetDisplay;
     boolean[] keys = new boolean[1024];
@@ -36,7 +37,8 @@ public class UI extends PApplet
 
     public void setup()
     {
-        button = new Button(this, 50, 50, 100, 50, "Launch");
+        launch = new Button(this, 50, 50, 100, 50, "Launch");
+        repair = new Button(this, 50, 50, 100, 50, "Repair");
         radar = new Radar(this, 0.2f, 30, 30, 100);
         map = new NavigationMap(this);
         planetDisplay = new PlanetDisplay(this);
@@ -52,9 +54,10 @@ public class UI extends PApplet
         
         moveAndRender(map, 550, 30, 0.7f);
         moveAndRender(planetDisplay, 200, 100);
-        moveAndRender(button, 340, 320, 1.5f);
-        moveAndRender(radar, 1000, 150);
-        moveAndRender(ship, 1100, 100, 0.8f);
+        moveAndRender(launch, 340, 320, 1.5f);
+        moveAndRender(repair, 587, 320, 1.5f);
+        moveAndRender(radar, 1000, 160);
+        moveAndRender(ship, 1100, 120, 0.8f);
         moveAndRender(travel, 930, 100);
     }
 
@@ -94,10 +97,14 @@ public class UI extends PApplet
             }
         }
 
-        if (button.isOver())
+        if (launch.isOver())
         {
-            button.setClicked(true);
             travel.setClicked(true);
+        }
+
+        if (repair.isOver())
+        {
+            ship.checkRepair();
         }
     }
 }

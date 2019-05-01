@@ -8,6 +8,9 @@ public class Ship implements Render{
     UI ui;
     float mX;
     float mY;
+    private boolean repair;
+    int startCount = 0;
+    int repairCount = 1000;
 
     public Ship(UI ui)
     {
@@ -23,6 +26,12 @@ public class Ship implements Render{
     {
         this.mX = this.mY;
         drawShip();
+        /*
+        if(repair)
+        {   
+            checkRepair();
+        }
+        */
     }
 
     public ArrayList<ShipPart> getParts()
@@ -40,6 +49,12 @@ public class Ship implements Render{
         {
             ui.fill(255, 0, 0);
             ui.stroke(255, 0, 0);
+        }
+        
+        if(shipPart.getDamaged() == true && repair == true)
+        {
+            ui.fill(113, 247, 17);
+            ui.stroke(113, 247, 17);
         }
 
         if (shipPart.getTitle().equals("Body"))
@@ -104,6 +119,20 @@ public class Ship implements Render{
         ui.endShape(UI.CLOSE);
         ui.noFill();
         ui.noStroke();
+
+        if (repair == true)
+        {
+            startCount++;
+            if(startCount == repairCount)
+            {
+                repair = false;
+                startCount = 0;
+                for (ShipPart part: shipParts)
+                {
+                    part.setDamaged(false);
+                }
+            }
+        }
     }
 
     public void drawShip()
@@ -153,6 +182,27 @@ public class Ship implements Render{
                     ui.popMatrix();
                     x = 200;
                 }
+            }
+        }
+    }
+    
+    public void setRepair(boolean repair)
+    {
+        this.repair = repair;
+    }
+
+    public boolean getRepair()
+    {
+        return repair;
+    }
+
+    public void checkRepair()
+    {
+        for (ShipPart shipPart : shipParts)
+        {
+            if(shipPart.getDamaged() == true)
+            {
+                repair = true;
             }
         }
     }

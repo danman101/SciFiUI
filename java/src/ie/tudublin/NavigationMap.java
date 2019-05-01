@@ -2,7 +2,6 @@ package ie.tudublin;
 
 import java.util.ArrayList;
 
-import processing.core.PApplet;
 import processing.data.Table;
 import processing.data.TableRow;
 
@@ -63,10 +62,12 @@ public class NavigationMap implements Render
         int n = 10;
         int x = 0;
         int y = 0;
-
+        
+        ui.strokeWeight(2.0f);
         ui.stroke(113, 247, 17);
         ui.fill(3, 9, 43);
         ui.rect(width/12, width/12, 670, 670);
+        ui.strokeWeight(1.0f);
         ui.noFill();
         ui.stroke(40, 201, 198, 255/2);
 
@@ -140,15 +141,20 @@ public class NavigationMap implements Render
     {   
         ui.noFill();
         ui.stroke(113, 247, 17);
+        ui.strokeWeight(2.0f);
         
-        ui.arc(mX, mY, 50, 50, 0 - UI.HALF_PI/3, UI.HALF_PI/3);
-        ui.arc(mX, mY, 50, 50, (3 * UI.PI/2) - UI.HALF_PI/3, (3 * UI.PI /2) + UI.HALF_PI/3);
-        ui.arc(mX, mY, 50, 50, UI.PI - UI.HALF_PI/3, UI.PI + UI.HALF_PI/3);
-        ui.arc(mX, mY, 50, 50, UI.PI / 2 - UI.HALF_PI/3, UI.PI / 2 + UI.HALF_PI/3);
+        if(mX > width/12 && mX < 735 && mY > height/12 && mY < 735)
+        {
+            ui.arc(mX, mY, 50, 50, 0 - UI.HALF_PI/3, UI.HALF_PI/3);
+            ui.arc(mX, mY, 50, 50, (3 * UI.PI/2) - UI.HALF_PI/3, (3 * UI.PI /2) + UI.HALF_PI/3);
+            ui.arc(mX, mY, 50, 50, UI.PI - UI.HALF_PI/3, UI.PI + UI.HALF_PI/3);
+            ui.arc(mX, mY, 50, 50, UI.PI / 2 - UI.HALF_PI/3, UI.PI / 2 + UI.HALF_PI/3);
         
-        ui.line(0, mY, mX - 25 , mY);
-        ui.line(width, mY, mX + 25, mY);
-        ui.line(mX, 0, mX, mY - 25);
-        ui.line(mX, height, mX, mY + 25);
+            ui.line(width/12, mY, mX - 25 , mY);
+            ui.line(735, mY, mX + 25, mY);
+            ui.line(mX, height/12, mX, mY - 25);
+            ui.line(mX, 735, mX, mY + 25);
+        }
+        ui.strokeWeight(1.0f);
     }
 }

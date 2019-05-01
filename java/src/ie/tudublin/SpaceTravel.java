@@ -8,8 +8,10 @@ public class SpaceTravel implements Render {
     private Planet selectedPlanet;
     private boolean clicked = false;
     private Ship ship;
-    private int upper;
-    private int lower;
+    private int breakUpper;
+    private int breakLower;
+    private int partUpper;
+    private int partLower;
     private Random random;
     private int result;
     float mX;
@@ -23,8 +25,10 @@ public class SpaceTravel implements Render {
         this.ui = ui;
         this.ship = ship;
         random = new Random();
-        upper = 5;
-        lower = 0;
+        breakUpper = 3;
+        breakLower = 1;
+        partUpper = 5;
+        partLower = 0;
         this.windowHeight = 200;
         this.windowWidth = 200;
     }
@@ -42,11 +46,11 @@ public class SpaceTravel implements Render {
         if (clicked == true && selectedPlanet != null)
         {
             currentPlanet = selectedPlanet;
-            result = random.nextInt(upper - lower) + lower;
+            result = random.nextInt(breakUpper - breakLower) + breakLower;
 
-            if(result == 4)
+            if(result == 2)
             {
-                result = random.nextInt(upper - lower) + lower;
+                result = random.nextInt(partUpper - partLower) + partLower;
                 ship.getParts().get(result).setDamaged(true);
             }
             clicked = false;
@@ -59,7 +63,7 @@ public class SpaceTravel implements Render {
         ui.textSize(20);
         ui.fill(40, 201, 198);
         ui.textAlign(UI.LEFT);
-        ui.text("Diagnostics", 2, windowHeight + 40);
+        ui.text("Diagnostics", 5, windowHeight + 45);
 
         for(ShipPart shipPart : ship.getParts())
         {
@@ -68,7 +72,13 @@ public class SpaceTravel implements Render {
             ui.rect(0, windowHeight + 20, windowWidth, windowHeight);
             ui.textSize(15);
             String status;
-            if(shipPart.getDamaged())
+            
+            if(shipPart.getDamaged() && ship.getRepair() == true)
+            {
+                ui.fill(113, 247, 17);
+                status = "Repairing";
+            }
+            else if(shipPart.getDamaged())
             {
                 ui.fill(242, 25, 21);
                 status = "Critical";
@@ -79,7 +89,7 @@ public class SpaceTravel implements Render {
                 status = "Stable";
             }
 
-            ui.text(shipPart.getTitle() + " : " + status, 0, textY);
+            ui.text(shipPart.getTitle() + " : " + status, 5, textY);
             textY += 30;
             ui.noFill();
         }
